@@ -4,7 +4,7 @@ Emulation d'une machine Enigma
 
 ## Description
 
-Ce projet est une émulation de la machine Enigma utilisée pendant la Seconde Guerre mondiale pour chiffrer et déchiffrer des messages. La machine Enigma utilise une série de rotors et un réflecteur pour transformer chaque lettre du message.
+Ce projet est une émulation de la machine Enigma utilisée pendant la Seconde Guerre mondiale pour chiffrer et déchiffrer des messages. La machine Enigma utilise une série de rotors, un réflecteur et un tableau de connexions pour transformer chaque lettre du message.
 
 ## Installation
 
