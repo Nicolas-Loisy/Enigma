@@ -17,13 +17,43 @@ cd Enigma
 
 ## Utilisation
 
-Pour exécuter l'émulation de la machine Enigma, lancez le script `app.py`.
+### Exécution de l'interface utilisateur
+
+Pour exécuter l'interface utilisateur de la machine Enigma, lancez le script `app_ui.py`.
+
+```bash
+python app_ui.py
+```
+
+### Exécution du script en ligne de commande
+
+Pour exécuter l'émulation de la machine Enigma via la ligne de commande, lancez le script `app.py`.
 
 ```bash
 python app.py
 ```
 
 Le script chiffrera et déchiffrera un message.
+
+### Génération d'un exécutable
+
+Pour générer un exécutable de l'application, utilisez `PyInstaller`. Assurez-vous d'avoir `PyInstaller` installé :
+
+```bash
+pip install pyinstaller
+```
+
+Ensuite, générez l'exécutable :
+
+```bash
+pyinstaller --onefile --windowed app_ui.py
+```
+
+L'exécutable sera créé dans le répertoire `dist`.
+
+### Exécutable prêt à l'emploi
+
+Un exécutable prêt à l'emploi est déjà disponible à la racine du projet. Vous pouvez l'exécuter directement sans avoir besoin de Python ou de générer un nouvel exécutable.
 
 ## Vidéo
 
