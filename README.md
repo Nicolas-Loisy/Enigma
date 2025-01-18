@@ -11,7 +11,7 @@ Ce projet est une émulation de la machine Enigma utilisée pendant la Seconde G
 Clonez le dépôt et assurez-vous d'avoir Python installé sur votre machine.
 
 ```bash
-git clone <URL_DU_DEPOT>
+git clone https://github.com/Nicolas-Loisy/Enigma.git
 cd Enigma
 ```
 
