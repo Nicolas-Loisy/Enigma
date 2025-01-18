@@ -33,7 +33,6 @@ class Enigma:
             raise ValueError("La configuration du réflecteur doit correspondre à la taille de l'alphabet.")
         
         self.reflector = Reflector(reflector_alphabet)
-        pass
 
     def run(self, message: str) -> str:
         encoded_message = ""
@@ -45,7 +44,7 @@ class Enigma:
             letter = self.reflector.reflect(letter)
             
             for rotor in reversed(self.rotors):
-                letter = rotor.encode(letter)
+                letter = rotor.encode(letter, reverse=True)
                 
             encoded_message += letter
             rotate_next = True
