@@ -1,5 +1,7 @@
 # Enigma
 
+[![Python](https://img.shields.io/badge/Python-v3.11.4-blue)](https://www.python.org/)
+
 Emulation d'une machine Enigma
 
 ## Description
