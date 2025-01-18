@@ -1,6 +1,6 @@
-from typing import List
 from rotor import Rotor
 from reflector import Reflector
+from connection_board import ConnectionBoard
 
 class Enigma:
     ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -12,14 +12,16 @@ class Enigma:
     REFLECTOR = 'QYHOGNECVPUZTFDJAXWMKISRBL'
     # Configuration Enigma du 02/1941
 
-    def __init__(self, rotor_positions: List[int]):
+    def __init__(self, rotor_positions: list[int], board_connections: list[str] = []):
         self.rotors = []
         self.reflector = None
+        self.connection_board = None
 
         self.set_rotors(rotor_positions)
         self.set_reflector(self.REFLECTOR)
+        self.set_connection_board(board_connections)
 
-    def set_rotors(self, rotor_positions: List[int]) -> None:
+    def set_rotors(self, rotor_positions: list[int]) -> None:
         if len(rotor_positions) != len(self.ROTORS):
             raise ValueError("Le nombre de configuration de positions de rotors doit correspondre au nombre de rotors.")
         
@@ -34,10 +36,20 @@ class Enigma:
         
         self.reflector = Reflector(reflector_alphabet)
 
+    def set_connection_board(self, board_connections: list[str]) -> None:
+        self.connection_board = ConnectionBoard(self.ALPHABET, board_connections)
+
     def run(self, message: str) -> str:
         encoded_message = ""
-        
+        message = message.upper()
+
         for letter in message:
+            if letter not in self.ALPHABET:
+                encoded_message += letter
+                continue
+
+            letter = self.connection_board.swap(letter)
+
             for rotor in self.rotors:
                 letter = rotor.encode(letter)
             
@@ -45,6 +57,8 @@ class Enigma:
             
             for rotor in reversed(self.rotors):
                 letter = rotor.encode(letter, reverse=True)
+            
+            letter = self.connection_board.swap(letter)
                 
             encoded_message += letter
             rotate_next = True
