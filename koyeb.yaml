@@ -1,0 +1,8 @@
+name: enigma-app
+services:
+  - name: enigma-service
+    image:
+      dockerfile_path: ./Dockerfile
+    ports:
+      - name: http
+        port: 5000
