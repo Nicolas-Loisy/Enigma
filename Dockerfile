@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Exposer le port sur lequel l'application va s'exécuter
-EXPOSE 5000
+EXPOSE 8000
 
 # Définir la commande pour exécuter l'application
-CMD ["python", "src/app.py"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "src.app:app"]
