@@ -1,6 +1,6 @@
-from rotor import Rotor
-from reflector import Reflector
-from connection_board import ConnectionBoard
+from .rotor import Rotor
+from .reflector import Reflector
+from .connection_board import ConnectionBoard
 
 class Enigma:
     ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'

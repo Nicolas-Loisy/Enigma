@@ -1,4 +1,4 @@
-from src.enigma.enigma import Enigma
+from enigma.enigma import Enigma
 
 def main():
     # Initial settings for the Enigma machine
