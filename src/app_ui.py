@@ -1,4 +1,4 @@
-from enigma import Enigma
+from src.enigma.enigma import Enigma
 import tkinter as tk
 
 class EnigmaApp:
