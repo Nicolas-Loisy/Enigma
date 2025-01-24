@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from enigma.enigma import Enigma
+from src.enigma.enigma import Enigma
 
 app = Flask(__name__)
 
@@ -24,4 +24,5 @@ def decode():
     return jsonify({'decoded_message': decoded_message})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8000, debug=False)
+    # app.run(host='0.0.0.0', port=8000, debug=False)
+    pass
