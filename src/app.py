@@ -1,21 +1,27 @@
+from flask import Flask, request, jsonify
 from src.enigma.enigma import Enigma
 
-def main():
-    # Initial settings for the Enigma machine
-    initial_positions = [1, 1, 1]
-    board_connections = ["AY", "CD", "EF"]
+app = Flask(__name__)
 
-    message = "VIVE LA CRYPTO"
+def process_message(data, encode=True):
+    initial_positions = data.get('initial_positions', [1, 1, 1])
+    board_connections = data.get('board_connections', ["AY", "CD", "EF"])
+    message = data.get('message', '') if encode else data.get('encoded_message', '')
 
-    # Encode the message
     enigma = Enigma(initial_positions, board_connections)
-    encoded_message = enigma.run(message)
-    print(f"Encoded message: {encoded_message}")
-    
-    # Decode the message
-    enigma = Enigma(initial_positions, board_connections)  # Reset Enigma
-    decoded_message = enigma.run(encoded_message)
-    print(f"Decoded message: {decoded_message}")
+    return enigma.run(message)
+
+@app.route('/encode', methods=['POST'])
+def encode():
+    data = request.get_json()
+    encoded_message = process_message(data, encode=True)
+    return jsonify({'encoded_message': encoded_message})
+
+@app.route('/decode', methods=['POST'])
+def decode():
+    data = request.get_json()
+    decoded_message = process_message(data, encode=False)
+    return jsonify({'decoded_message': decoded_message})
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
