@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from src.enigma.enigma import Enigma
 
 app = Flask(__name__)
+CORS(app)
 
 def process_message(data, encode=True):
     initial_positions = data.get('initial_positions', [1, 1, 1])
